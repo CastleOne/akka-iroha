@@ -15,7 +15,7 @@ val transaction = Transaction.create(authorAccount, time) { implicit builder =>
   import Iroha._
   
   add CreateAccount(Account("account1", "domain"), defaultKeypair.publicKey)
-  add TransferAsset(Account("account@domain", "account1@domain"), Asset("usd#domain"), Description("description"), BigDecimal(5))
+  add TransferAsset(Account("account@domain"), Account("account1@domain"), Asset("usd#domain"), Description("description"), BigDecimal(5))
   
   // Option A
   needs authorAccount signature
@@ -27,7 +27,7 @@ val transaction = Transaction.create(authorAccount, time) { implicit builder =>
 
 val payload = Payload.createFromSeq(Seq(transaction))
 
-val authorKeypair = Iroha.Keypair.fromBytes(supersecret§)
+val authorKeypair = Iroha.Keypair.fromBytes(supersecret1)
 val statementsKeypair = Iroha.Keypair.fromBytes(supersecret2)
 
 grpc.torii(
