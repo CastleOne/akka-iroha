@@ -1,4 +1,3 @@
-import net.cimadai.iroha.Iroha.IrohaAssetName
 import org.hyperledger.iroha.scaladsl
 
 object Iroha {
@@ -40,7 +39,7 @@ object Iroha {
       def apply(combined: String): Asset = {
         val parts = combined.split("@")
         assert(parts.length == 2)
-        Asset(parts(0), parts(1))
+        Account(parts(0), parts(1))
       }
     }
   }
